@@ -10,7 +10,7 @@ apt update && apt upgrade -y
 
 echo "[*] Installing standard tools..."
 # Terminal
-apt install tilix
+apt install -y tilix
 # CRT 
-apt install rlogin finger
+apt install -y rsh-client finger
 

@@ -29,8 +29,17 @@ dpkg-reconfigure openssh-server
 cd ~
 
 echo "[*] Tools..."
-mkdir tools
+#mkdir tools
 
+echo "[*] .bashrc & Aliases..."
+cat << EOT >> ~kali/.bash_aliases
+# Aliases go here!
+EOT
+# Copy both over to root
+cp ~kali/.bashrc ~/
+cp ~kali/.bash_aliases ~/
+# Change the prompt colour for Kali's bashrc - I don't like them being the same :)
+sed -i 's/\[01;31m\\]\u@\h/\[\033[01;33m\\]\u@\h/g' ~kali/.bashrc
 
 echo "[*] Done!"
 

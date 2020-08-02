@@ -29,7 +29,10 @@ dpkg-reconfigure openssh-server
 cd ~
 
 echo "[*] Tools..."
-#mkdir tools
+apt install -y python-pip
+# EyeWitness
+git clone https://github.com/ChrisTruncer/EyeWitness.git /opt/EyeWitness
+/opt/EyeWitness/Python/setup/setup.sh
 
 echo "[*] .bashrc & Aliases..."
 cat << EOT >> ~kali/.bash_aliases
@@ -39,7 +42,7 @@ EOT
 cp ~kali/.bashrc ~/
 cp ~kali/.bash_aliases ~/
 # Change the prompt colour for Kali's bashrc - I don't like them being the same :)
-sed -i 's/\[01;31m\\]\u@\h/\[\033[01;33m\\]\u@\h/g' ~kali/.bashrc
+sed -i 's/\[01;31m\\]\\u@\\h/\[01;33m\\]\\u@\\h/g' ~kali/.bashrc
 
 echo "[*] Done!"
 

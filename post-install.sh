@@ -17,6 +17,8 @@ apt install -y rsh-client ipcalc finger nbtscan-unixwiz
 curl -O http://http.us.debian.org/debian/pool/main/n/netkit-rsh/rsh-client_0.17-17+b1_amd64.deb
 dpkg -i rsh-client_0.17-17+b1_amd64.deb
 rm rsh-client_0.17-17+b1_amd64.deb
+# Others
+apt install -y seclists
 
 echo "[*] Config Changes..."
 # Set default terminal
@@ -33,8 +35,7 @@ apt install -y python-pip
 # EyeWitness
 git clone https://github.com/ChrisTruncer/EyeWitness.git /opt/EyeWitness
 /opt/EyeWitness/Python/setup/setup.sh
-# SecLists
-sudo git clone https://github.com/danielmiessler/SecLists.git /opt/SecLists
+
 
 echo "[*] .bashrc & Aliases..."
 cat << EOT >> ~kali/.bash_aliases

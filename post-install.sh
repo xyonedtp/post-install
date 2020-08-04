@@ -33,6 +33,8 @@ apt install -y python-pip
 # EyeWitness
 git clone https://github.com/ChrisTruncer/EyeWitness.git /opt/EyeWitness
 /opt/EyeWitness/Python/setup/setup.sh
+# SecLists
+sudo git clone https://github.com/danielmiessler/SecLists.git /opt/SecLists
 
 echo "[*] .bashrc & Aliases..."
 cat << EOT >> ~kali/.bash_aliases

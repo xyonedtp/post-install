@@ -35,7 +35,16 @@ apt install -y python3-pip
 # EyeWitness
 git clone https://github.com/ChrisTruncer/EyeWitness.git /opt/EyeWitness
 /opt/EyeWitness/Python/setup/setup.sh
-# TODO Docker
+# Docker
+apt install -y docker.io
+# Syncthing
+apt install -y syncthing
+# Setup - see https://www.tylerburton.ca/2016/02/setting-up-syncthing-to-share-files-on-linux/
+# ... syncthing user service
+su kali
+mkdir -p ~kali/.config/systemd/user
+cp /usr/lib/systemd/user/syncthing.service ~kali/.config/systemd/user/
+exit
 
 echo "[*] .zshrc Functions & Aliases..."
 cp ~kali/.zshrc ~kali/.zshrc.orig
@@ -63,3 +72,6 @@ addhost(){
 EOT
 echo "[*] Done!"
 
+echo "[!] Syncthing - run following as standard user to enable service"
+echo "systemctl --user enable syncthing.service"
+echo "systemctl --user start syncthing.service"

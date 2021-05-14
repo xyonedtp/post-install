@@ -31,7 +31,7 @@ dpkg-reconfigure openssh-server
 cd ~
 
 echo "[*] Tools..."
-apt install -y python-pip
+apt install -y python3-pip
 # EyeWitness
 git clone https://github.com/ChrisTruncer/EyeWitness.git /opt/EyeWitness
 /opt/EyeWitness/Python/setup/setup.sh

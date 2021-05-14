@@ -10,7 +10,7 @@ apt update && apt upgrade -y
 
 echo "[*] Installing standard tools..."
 # Terminal
-apt install -y tilix
+apt install -y terminator
 # CRT 
 apt install -y rsh-client ipcalc finger nbtscan-unixwiz
 # ... need an old version of rsh-client
@@ -35,17 +35,31 @@ apt install -y python-pip
 # EyeWitness
 git clone https://github.com/ChrisTruncer/EyeWitness.git /opt/EyeWitness
 /opt/EyeWitness/Python/setup/setup.sh
+# TODO Docker
 
+echo "[*] .zshrc Functions & Aliases..."
+cp ~kali/.zshrc ~kali/.zshrc.orig
+cat << EOT >> ~kali/.zshrc
+# Functions & Aliases
+alias stripcolours='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
 
-echo "[*] .bashrc & Aliases..."
-cat << EOT >> ~kali/.bash_aliases
-# Aliases go here!
+addhost(){
+	mkdir $1;
+	cd $1
+	echo -n $1 > host
+}
 EOT
-# Copy both over to root
-cp ~kali/.bashrc ~/
-cp ~kali/.bash_aliases ~/
-# Change the prompt colour for Kali's bashrc - I don't like them being the same :)
-sed -i 's/\[01;31m\\]\\u@\\h/\[01;33m\\]\\u@\\h/g' ~kali/.bashrc
+# Do the same for root
+cp ~/.zshrc ~/.zshrc.orig
+cat << EOT >> ~/.zshrc
+# Functions & Aliases
+alias stripcolours='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
 
+addhost(){
+	mkdir $1;
+	cd $1
+	echo -n $1 > host
+}
+EOT
 echo "[*] Done!"
 

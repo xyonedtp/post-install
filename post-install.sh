@@ -63,11 +63,30 @@ cp ~/.zshrc ~/.zshrc.orig
 cat << EOT >> ~/.zshrc
 # Functions & Aliases
 alias stripcolours='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'
+addip(){
+	result=${PWD##*/} 
+	if [ "$result" == 'by-ip' ]; then
+		mkdir "$1";
+		cd $1;
+		echo -n "$1"  > ip
+	else
+		echo 'Wrong Directory';
+	fi
+}  
 
 addhost(){
-	mkdir $1;
-	cd $1
-	echo -n $1 > host
+	result=${PWD##*/} 
+	if [ "$result" == 'by-hostname' ]; then
+		if [ "$2" != "" ]; then 
+			ln -s "../by-ip/$2" "$1";
+			cd "$1"
+			echo -n $1  > hostname
+		else
+			echo 'Missing 2nd Parameter?'
+		fi
+	else
+		echo 'Wrong Directory';
+	fi
 }
 EOT
 echo "[*] Done!"
